@@ -1,0 +1,45 @@
+## Operating System
+
+.DS_Store*
+__pycache__
+*.pro.user.*
+*.user
+*.pyc
+*.pfd
+*.o
+*.obj
+*.exp
+*.lib
+*.so
+*.dylib
+*.pyd
+*.pyo
+*~
+
+## User
+
+.qmake.stash
+*.autosave
+.pytest_cache
+htmlcov
+.coverage*
+.#*
+.xcuserstate
+Makefile*
+*.vcxproj
+*.filters
+*.sln
+.venv
+.direnv
+
+## Build
+
+build/osx
+build/ios
+build/win32
+CMakeFiles
+CMakeCache.txt
+*.cmake
+*.xcscmblueprint
+xcuserdata
+sysroot-*

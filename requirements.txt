@@ -1,0 +1,16 @@
+pandas
+numpy
+matplotlib
+requests
+pyqt5
+pyqtdeploy
+sip
+pyqt-builder
+
+
+## canslim
+
+scipy
+seaborn
+bs4
+sklearn
