@@ -5,17 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Python: main.py",
+            "name": "Python: main.py (macOS)",
             "type": "python",
             "request": "launch",
             "program": "main.py",
+            "pythonPath": "${workspaceFolder}/.direnv/python-3.7.8/bin/python",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: main.py (Windows)",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "pythonPath": "C:\\Users\\patrick\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
             "console": "integratedTerminal"
         }
     ]
