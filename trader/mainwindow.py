@@ -13,10 +13,12 @@ class MainWindow(QMainWindow, Debug):
 
         self._filePath = None
 
-        self._strategy = SMAStrategy(self)
-        self.canvas = MplCanvas(self, width=5, height=4, dpi=100)
+        w = QWidget()
+
+        self._strategy = SMAStrategy(w)
+        self.canvas = MplCanvas(w, width=5, height=4, dpi=100)
         self.canvas.setStrategy(self._strategy)
-        toolbar = MplNavigationToolbar(self.canvas, self)
+        toolbar = MplNavigationToolbar(self.canvas, w)
         PltLayout = QVBoxLayout()
         PltLayout.addWidget(self._strategy)
         PltLayout.addWidget(self.canvas)
@@ -32,12 +34,11 @@ class MainWindow(QMainWindow, Debug):
             self.fileList.addItem(fileName)
         self.fileList.itemSelectionChanged.connect(self.onFileItemSelectionChanged)
 
-        centralWidget = QWidget(self)
-        Layout = QHBoxLayout(centralWidget)
+        Layout = QHBoxLayout(w)
         Layout.addLayout(PltLayout)
         Layout.addWidget(self.fileList)
 
-        self.setCentralWidget(centralWidget)
+        self.setCentralWidget(w)
         self.resize(1250, 800)
 
     def openFile(self, filePath):

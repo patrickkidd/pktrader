@@ -3,22 +3,10 @@ from .pyqt import *
 from .debug import Debug
 
 
-
-# DataFrame.plot(
-#     x=None, y=None, kind='line', ax=None, subplots=False,
-#     sharex=None, sharey=False, layout=None, figsize=None,
-#     use_index=True, title=None, grid=None, legend=True, style=None,
-#     logx=False, logy=False, loglog=False, xticks=None, yticks=None,
-#     xlim=None, ylim=None, rot=None, fontsize=None, colormap=None,
-#     table=False, yerr=None, xerr=None, secondary_y=False, 
-#     sort_columns=False, **kwargs
-# )
-
-
 class Strategy(QWidget, Debug):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setFixedHeight(45)
+        self.setFixedHeight(65)
 
     def run(self, stockValues, stock):
         pass
@@ -36,28 +24,35 @@ class SMAStrategy(Strategy):
         self._shortWindow = 30
         self._longWindow = 100
 
-        Layout = QHBoxLayout()
         self.shortLabel = QLabel('Short Window:', self)
-        self.shortLabel.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+
         self.shortEdit = QLineEdit(self)
         self.shortEdit.setText(str(self._shortWindow))
         self.shortEdit.setInputMask('000')
         self.shortEdit.setMaxLength(3)
-        self.shortEdit.setMaximumWidth(35)
+        self.shortEdit.setMaximumWidth(45)
+        policy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.shortEdit.setSizePolicy(policy)
         self.shortEdit.editingFinished.connect(self.onShortWindowChanged)
+
         self.longLabel = QLabel('Long Window:', self)
-        self.longLabel.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+
         self.longEdit = QLineEdit(self)
         self.longEdit.setText(str(self._longWindow))
         self.longEdit.setInputMask('000')
         self.longEdit.setMaxLength(3)
-        self.longEdit.setMaximumWidth(35)
+        self.longEdit.setMaximumWidth(45)
+        policy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        policy.setHeightForWidth(self.longEdit.sizePolicy().hasHeightForWidth())
+        self.longEdit.setSizePolicy(policy)
         self.longEdit.editingFinished.connect(self.onLongWindowChanged)
+
+        Layout = QHBoxLayout()
         Layout.addWidget(self.shortLabel)
         Layout.addWidget(self.shortEdit)
         Layout.addWidget(self.longLabel)
         Layout.addWidget(self.longEdit)
-        Layout.addSpacing(10)
+        Layout.addStretch(10)
         self.setLayout(Layout)
 
     def run(self, _stockValues, stock):
