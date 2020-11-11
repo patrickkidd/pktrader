@@ -8,12 +8,14 @@ from .mainwindow import MainWindow
 
 
 
-
 def main():
+
     app = QApplication(sys.argv)
     w = MainWindow()
     w.show()
-    w.fileList.item(0).setSelected(True)
+    item = w.fileList.item(0)
+    if item:
+        item.setSelected(True)
     app.exec()
 
 

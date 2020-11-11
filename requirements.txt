@@ -1,7 +1,9 @@
 pandas
 numpy
 matplotlib
-requests
+
+# Build
+
 pyqt5
 pyqtdeploy
 sip
@@ -10,7 +12,7 @@ pyqt-builder
 
 ## canslim
 
-scipy
-seaborn
-bs4
-sklearn
+# scipy
+# seaborn
+# bs4
+# sklearn

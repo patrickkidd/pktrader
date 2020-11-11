@@ -34,9 +34,8 @@ Makefile*
 
 ## Build
 
-build/osx
-build/ios
-build/win32
+build
+dist
 CMakeFiles
 CMakeCache.txt
 *.cmake
