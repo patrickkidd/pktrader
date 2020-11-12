@@ -3,9 +3,13 @@ from .pyqt import *
 from .debug import Debug
 
 
-class Strategy(QWidget, Debug):
+class Strategy(QGroupBox, Debug):
+
+    NAME = 'NULL Strategy'
+
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.setTitle(self.NAME)
         self.setFixedHeight(65)
 
     def run(self, stockValues, stock):
@@ -60,27 +64,27 @@ class SMAStrategy(Strategy):
 
         buys = []
         sells = []
-        flag = -1
+        holding = False
 
         shortValues = stockValues.rolling(window=self._shortWindow).mean()
         longValues = stockValues.rolling(window=self._longWindow).mean()
 
         for i in range(len(stockValues)):
             if shortValues[i] > longValues[i]:
-                if flag != 1:
+                if not holding:
                     buys.append(stockValues[i])
                     sells.append(numpy.nan)
-                    flag = 1
-                    stock.buy(stockValues[i])
+                    holding = True
+                    stock.buy(_stockValues['Date'][i], stockValues[i])
                 else:
                     buys.append(numpy.nan)
                     sells.append(numpy.nan)
             elif shortValues[i] < longValues[i]:
-                if flag != 0:
+                if holding:
                     buys.append(numpy.nan)
                     sells.append(stockValues[i])
-                    flag = 0
-                    stock.sell(stockValues[i])
+                    holding = False
+                    stock.sell(_stockValues['Date'][i], stockValues[i])
                 else:
                     buys.append(numpy.nan)
                     sells.append(numpy.nan)

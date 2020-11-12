@@ -10,12 +10,11 @@ from .mainwindow import MainWindow
 
 def main():
 
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True) # before app creation
     app = QApplication(sys.argv)
     w = MainWindow()
     w.show()
-    item = w.fileList.item(0)
-    if item:
-        item.setSelected(True)
+    w.init()
     app.exec()
 
 

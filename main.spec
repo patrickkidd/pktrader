@@ -23,7 +23,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='main',
+          name='PKTrader',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -34,4 +34,9 @@ exe = EXE(pyz,
 app = BUNDLE(exe,
              name='PKTrader.app',
              icon=None,
-             bundle_identifier=None)
+             bundle_identifier=None,
+             info_plist={
+                'NSHighResolutionCapable': True,
+                'CFBundleIdentifier': 'com.vedanamedia.pktrader',
+                'CFBundleName': 'PKTrader'
+             })

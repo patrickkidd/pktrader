@@ -10,10 +10,13 @@ ROOT=`cd "$BIN/.."; pwd`
 
 if [[ $TARGET = "osx" ]]; then
 
-	pyinstaller --onefile --windowed main.spec
+	pyinstaller --onedir --windowed --noconfirm main.spec
+	codesign -s "Developer ID Application: Patrick Stinson (8KJB799CU7)" dist/PKTrader.app
+	open ./dist
 
 elif [[ $TARGET == "clean" ]]; then
 
-	rm -rf build dist
+	echo "CLEAN"
+	rm -rf ./build ./dist
 
 fi
