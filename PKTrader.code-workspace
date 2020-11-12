@@ -6,7 +6,9 @@
 	],
 	"settings": {
 		"files.exclude": {
-			".direnv": true
+			".direnv": true,
+			"**/build": true,
+			"**/dist": true
 		}
 	}
 }

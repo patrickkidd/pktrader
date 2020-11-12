@@ -1,14 +1,12 @@
 pandas
 numpy
-matplotlib
+matplotlib==3.2.2
+yfinance
+pyqt5
 
 # Build
 
-pyqt5
-pyqtdeploy
-sip
-pyqt-builder
-
+pyinstaller
 
 ## canslim
 
